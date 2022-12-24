@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtworkController;
+use App\Http\Controllers\ProcessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ use App\Http\Controllers\ArtworkController;
 */
 
 Route::get('/', [ArtworkController::class, 'index']);
+Route::post('/process', [ProcessController::class, 'index']);
