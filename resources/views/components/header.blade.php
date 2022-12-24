@@ -11,7 +11,7 @@
         <li>About</li>
         <li>NFT</li>
     </ul>
-    <button class="bg-[#14ec5d] p-2 px-4 text-xs font-medium rounded-sm">
+    <button id="connect" class="bg-[#14ec5d] p-2 px-4 text-xs font-medium rounded-sm">
         Connect Wallet
     </button>
 </header>
