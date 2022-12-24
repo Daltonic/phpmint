@@ -19,7 +19,5 @@
             <span class="text-[#14ec5d] text-xs">Queen</span>
         </div>
     </a>
-    <button class="bg-[#14ec5d] py-2 px-4 text-xs font-medium rounded-sm">
-        Mint NFT
-    </button>
+    <div id="mint_wrapper"></div>
 </div>
