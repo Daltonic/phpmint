@@ -1,5 +1,10 @@
 import './bootstrap'
-import { connectWallet, isWallectConnected, truncate } from './blockchain'
+import {
+  connectWallet,
+  isWallectConnected,
+  truncate,
+  toBase64,
+} from './blockchain'
 
 const connectButton = document.querySelector('button#connect')
 const mintWrapper = document.querySelector('div#mint_wrapper')
@@ -32,6 +37,16 @@ window.addEventListener('load', async () => {
       closeMintBtn.addEventListener('click', async () => {
         mintBox.classList.remove('scale-100')
         mintBox.classList.add('scale-0')
+      })
+
+      const imageUrlInput = document.querySelector('input#imageUrl')
+
+      imageUrlInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0]
+        const base64 = await toBase64(e.target.files[0])
+
+        const preview = document.querySelector('img#preview')
+        preview.src = base64
       })
     })
     .catch((error) => {

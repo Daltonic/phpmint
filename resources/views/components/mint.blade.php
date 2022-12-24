@@ -2,7 +2,7 @@
     class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 transform
     transition-transform duration-300 scale-0 z-50">
     <div class="bg-[#151c25] shadow-xl shadow-white rounded-xl w-11/12 md:w-2/5 h-7/12 p-6">
-        <form class="flex flex-col">
+        <form action="/process" method="POST" class="flex flex-col">
             <div class="flex flex-row justify-between items-center">
                 <p class="font-semibold text-gray-400 italic">Mint NFT</p>
                 <button id="close_mint" type="button" class="border-0 bg-transparent focus:outline-none">
@@ -12,7 +12,7 @@
 
             <div class="flex flex-row justify-center items-center rounded-xl mt-5">
                 <div class="shrink-0 rounded-xl overflow-hidden h-20 w-20">
-                    <img alt="NFT" class="h-full w-full object-cover cursor-pointer"
+                    <img id="preview" alt="NFT" class="h-full w-full object-cover cursor-pointer"
                         src="https://avatars.githubusercontent.com/u/107491357?v=4" />
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         file:bg-[#19212c] file:text-gray-300
                         hover:file:bg-[#1d2631]
                         cursor-pointer focus:ring-0 focus:outline-none"
-                        required />
+                        id="imageUrl" required />
                 </label>
             </div>
 
