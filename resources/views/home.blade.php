@@ -12,6 +12,7 @@
     <div class="h-screen box-border">
         @include('components.hero')
         @include('components.artworks')
+        @include('components.about')
         @include('components.footer')
     </div>
 </body>
