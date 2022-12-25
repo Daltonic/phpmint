@@ -32,19 +32,15 @@ class ProcessController extends Controller
         $base64 = base64_encode($imageData);
         $base64 = 'data:' . $image->getMimeType() . ';name=' . $image->getClientOriginalName() . ';base64,' . $base64;
 
-        dd([$name, $description, $recipientAddress, $base64]);
-        // Process the form data and take any necessary action
+        $this->mint($name, $description, $base64, $image->getClientOriginalName(), $recipientAddress);
 
-        // return redirect()->back();
-
-
-
+        return redirect()->back();
     }
 
     private function mint($name, $description, $base64, $filename, $recipientAddress)
     {
         $client = new Client();
-        $response = $client('https://api.verbwire.com/v1/nft/mint/mintFromFile', [
+        $client->post('https://api.verbwire.com/v1/nft/mint/mintFromFile', [
             'multipart' => [
                 [
                     'name' => 'allowPlatformToOperateToken',
@@ -84,6 +80,5 @@ class ProcessController extends Controller
                 'accept' => 'application/json',
             ],
         ]);
-        dd($response->getBody());
     }
 }
