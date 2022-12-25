@@ -41,13 +41,7 @@
                     type="text" name="name" placeholder="Name" required />
             </div>
 
-            <div class="flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-5">
-                <input
-                    class="block w-full text-sm
-                    text-slate-500 bg-transparent border-0
-                    focus:outline-none focus:ring-0 px-4 py-2"
-                    type="number" name="price" step="0.01" min="0.01" placeholder="Price (Eth)" required />
-            </div>
+            <input id="recipientAddress" type="hidden" name="recipientAddress">
 
             <div class="flex flex-row justify-between items-center bg-gray-800 rounded-xl mt-5">
                 <textarea

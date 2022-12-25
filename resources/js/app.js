@@ -21,13 +21,16 @@ window.addEventListener('load', async () => {
         </button>
       `
 
+      const preview = document.querySelector('img#preview')
+      const mintBox = document.querySelector('div#mint_box')
+      const imageUrlInput = document.querySelector('input#imageUrl')
+      const openMintBtn = document.querySelector('button#open_mint')
+      const closeMintBtn = document.querySelector('button#close_mint')
+      const recipientAddress = document.querySelector('input#recipientAddress')
+
       connectButton.addEventListener('click', async () => {
         await connectWallet()
       })
-
-      const openMintBtn = document.querySelector('button#open_mint')
-      const closeMintBtn = document.querySelector('button#close_mint')
-      const mintBox = document.querySelector('div#mint_box')
 
       openMintBtn.addEventListener('click', async () => {
         mintBox.classList.remove('scale-0')
@@ -39,15 +42,12 @@ window.addEventListener('load', async () => {
         mintBox.classList.add('scale-0')
       })
 
-      const imageUrlInput = document.querySelector('input#imageUrl')
-
       imageUrlInput.addEventListener('change', async (e) => {
-        const file = e.target.files[0]
         const base64 = await toBase64(e.target.files[0])
-
-        const preview = document.querySelector('img#preview')
         preview.src = base64
       })
+
+      recipientAddress.value = account
     })
     .catch((error) => {
       console.log(error)
