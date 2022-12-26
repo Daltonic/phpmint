@@ -53,7 +53,7 @@ class ProcessController extends Controller
 
         $response = json_decode($response->getBody(), true);
         $ipfs_image = $response['ipfs_storage']['ipfs_url'];
-        $this->mint($name, $description, $ipfs_image, $image->getClientOriginalName(), $recipientAddress, $price);
+        $this->mint($name, $description, $ipfs_image, $recipientAddress);
 
         $artwork = new Artwork();
         $artwork->name = $name;
@@ -65,8 +65,9 @@ class ProcessController extends Controller
         return redirect()->back();
     }
 
-    private function mint($name, $description, $ipfs_image, $recipientAddress, $price)
+    private function mint($name, $description, $ipfs_image, $recipientAddress)
     {
+
         $client = new Client();
         $client->post('https://api.verbwire.com/v1/nft/mint/mintFromMetadata', [
             'multipart' => [
@@ -77,6 +78,10 @@ class ProcessController extends Controller
                 [
                     'name' => 'imageUrl',
                     'contents' => $ipfs_image
+                ],
+                [
+                    'name' => 'data',
+                    'contents' => $this->getAttributes()
                 ],
                 [
                     'name' => 'name',
@@ -93,10 +98,6 @@ class ProcessController extends Controller
                 [
                     'name' => 'recipientAddress',
                     'contents' => $recipientAddress
-                ],
-                [
-                    'name' => 'data',
-                    'contents' => $price
                 ]
             ],
             'headers' => [
@@ -104,5 +105,60 @@ class ProcessController extends Controller
                 'accept' => 'application/json',
             ],
         ]);
+    }
+
+    private function getAttributes()
+    {
+        $attributes = [
+            'countries' => [
+                'Nigeria',
+                'Egypt',
+                'South Africa',
+                'Algeria',
+                'Sudan',
+                'Ethiopia',
+                'Morocco',
+            ],
+
+            'languages' => [
+                'English',
+                'Arabic',
+                'Afrikaans',
+                'Arabic',
+                'Arabic',
+                'Amharic',
+                'Arabic',
+            ],
+
+            'rarity' => range(0, 5)
+        ];
+
+        $data = [
+            [
+                'trait_type' => 'Countries',
+                'value' => $attributes['countries'][array_rand($attributes['countries'])],
+            ],
+            [
+                'trait_type' => 'Languages',
+                'value' => $attributes['languages'][array_rand($attributes['languages'])],
+            ],
+            [
+                'trait_type' => 'Rarity',
+                'value' => $attributes['rarity'][array_rand($attributes['rarity'])],
+                'max_value' => 7,
+            ],
+            [
+                'display_type' => 'date',
+                'trait_type' => 'Created',
+                'value' => time(),
+            ],
+            [
+                'display_type' => 'number',
+                'trait_type' => 'generation',
+                'value' => 1,
+            ],
+        ];
+
+        return json_encode($data, true);
     }
 }
