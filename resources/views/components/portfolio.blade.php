@@ -1,9 +1,11 @@
-<div class="flex flex-col justify-center items-center space-y-4 w-4/5 mx-auto mt-16">
-    <h1 class="text-white text-4xl font-black">Artwork Collection</h1>
+<div class="flex flex-col justify-center items-center space-y-4 w-4/5 mx-auto mt-10 py-5">
+    <h1 class="text-white text-3xl font-medium sm:font-black">
+        Artwork Collection
+    </h1>
     <p class="text-[#14ec5d] text-xs">
         Mint and collect the hottest NFTs around.
     </p>
-    <p class="text-white w-1/2 text-center">
+    <p class="text-white hidden sm:flex sm:w-4/5 md:w-1/2 text-center">
         Princess Uhiene is an accomplished programmer who specializes in
         web3 and solidity. She is known for her expertise in these
         cutting-edge technologies and has been at the forefront of their

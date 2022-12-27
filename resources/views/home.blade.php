@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="min-h-screen box-border">
+    <div class="min-h-screen w-screen">
         @include('components.hero')
         @include('components.artworks')
         @include('components.about')

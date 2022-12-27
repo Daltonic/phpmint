@@ -5,7 +5,7 @@
             AfroMint
         </h1>
     </div>
-    <ul class="flex space-x-4 text-lg text-white">
+    <ul class="hidden sm:flex space-x-4 text-lg text-white">
         <li>Home</li>
         <li>Collection</li>
         <li>About</li>
