@@ -11,10 +11,11 @@
 </head>
 
 <body>
-    <div class="min-h-screen w-screen">
+    <div class="h-screen box-border w-screen">
         @include('components.hero')
         @include('components.artworks')
         @include('components.about')
+        @include('components.author')
         @include('components.mint')
         @include('components.footer')
     </div>
